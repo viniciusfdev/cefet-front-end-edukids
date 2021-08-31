@@ -11,9 +11,9 @@
 /* Exercício 1: Criar uma transição para quando o mouse estiver em cima dos
  * botões play/stop (para que o elemento se revele lentamente)
  */
- #controles ul {
-
- }
+#controles ul {
+  transition: all 0.5s ease-in-out;
+}
 
 /*
  * Exercício 2: Você deve implementar uma metáfora visual para cada um dos 4
@@ -23,18 +23,67 @@
  *   - com-raiva: animal fica pulsando
  *   - atacando: animal dá um salto e cresce, com uma borda vermelha
  */
-.com-fome {
 
+@keyframes rageous {
+  from {
+    margin-left: 30px;
+    background-color: rgb(233, 0, 70);
+  }
+  to {
+    margin-left: -30px;
+    background-color: rgb(114, 0, 34);
+  }
+}
+
+@keyframes happiness {
+  from {
+    transform: rotate(0deg);
+    background-color: rgb(37, 223, 0);
+  }
+  to {
+    transform: rotate(-360deg);
+    background-color: rgb(0, 129, 54);
+  }
+}
+
+@keyframes hungry {
+  from {
+    background-color: rgb(196, 196, 196);
+    opacity: 1;
+  }
+  to {
+    background-color: rgb(51, 51, 51);
+    opacity: 0.5;
+  }
+}
+
+@keyframes attack {
+  from {
+    background-color: rgb(94, 120, 155);
+    transform: rotateY(0deg) rotateZ(0deg);
+    -webkit-box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, 5px 5px 15px 5px rgba(0,0,0,0);
+  }
+  to {
+    background-color: rgb(15, 12, 24);
+    transform: rotateY(360deg) rotateZ(300deg);
+    -webkit-box-shadow: -40px -40px -00px -00px #0b4c77, -100px -100px -00px -00px #5FB8FF, -140px -140px -00px -00px #0b4c77, -200px -200px -00px -00px #CAE6FF, -240px -240px -00px -00px #E1EEFF, -30px -220px -290px -40px rgba(69,83,255,0.4); 
+    box-shadow: -40px -40px -00px -00px #0b4c77, -100px -100px -00px -00px #5FB8FF, -140px -140px -00px -00px #0b4c77, -200px -200px -00px -00px #CAE6FF, -240px -250px -00px -00px #E1EEFF, -30px -220px -290px -40px rgba(69,83,255,0.4);
+  }
+}
+
+.com-fome {
+  animation: hungry 0.2s ease-in 0s infinite;
 }
 
 .satisfeito {
-
+  animation: happiness 0.2s linear 0s forwards;
 }
 
 .com-raiva {
-
+  animation: rageous 0.3s ease-in-out 0s infinite;
 }
 
 .atacando {
-
+  animation: attack 1s ease-in-out 0.1s infinite;
 }
